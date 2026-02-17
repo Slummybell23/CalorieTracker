@@ -11,28 +11,31 @@ import SwiftUI
 struct DashboardView: View {
     var body: some View {
         VStack {
+
+            QuickInfoView()
+            
             Section {
-                HStack {
-                    VStack{
-                        Text("100")
-                        Text("Consumed")
-                    }
-                    .padding(10)
-                    VStack{
-                        Text("100")
-                        Text("Expenditure")
-                    }
-                    .padding(10)
-                    VStack{
-                        Text("100")
-                        Text("Remaining")
-                    }
-                    .padding(10)
+                Text("Food Log")
+                
+                List {
+                    Text("Test log item")
                 }
+                .listStyle(PlainListStyle())
             }
+            .padding(10)
             .cardModifier()
             
             Spacer()
+            
+            HStack {
+                Button(action: {
+                    
+                }, label: {
+                    Label("Log Food", systemImage: "plus")
+                })
+                .buttonStyle(.glassProminent)
+                
+            }
         }
         
     }
