@@ -14,12 +14,23 @@ struct DashboardView: View {
             Section {
                 HStack {
                     VStack{
-                        Text("0/100")
+                        Text("100")
                         Text("Consumed")
                     }
-                    Spacer()
+                    .padding(10)
+                    VStack{
+                        Text("100")
+                        Text("Expenditure")
+                    }
+                    .padding(10)
+                    VStack{
+                        Text("100")
+                        Text("Remaining")
+                    }
+                    .padding(10)
                 }
             }
+            .cardModifier()
             
             Spacer()
         }
