@@ -9,27 +9,19 @@ import Foundation
 import SwiftUI
 
 struct DashboardView: View {
+    @State var showLogFoodView: Bool = false
     var body: some View {
         VStack {
 
             QuickInfoView()
             
-            Section {
-                Text("Food Log")
-                
-                List {
-                    Text("Test log item")
-                }
-                .listStyle(PlainListStyle())
-            }
-            .padding(10)
-            .cardModifier()
+            FoodLogList()
             
             Spacer()
             
             HStack {
                 Button(action: {
-                    
+                    showLogFoodView.toggle()
                 }, label: {
                     Label("Log Food", systemImage: "plus")
                 })
@@ -37,6 +29,9 @@ struct DashboardView: View {
                 
             }
         }
+        .sheet(isPresented: $showLogFoodView, content: {
+            LogFoodView(showFoodLogView: $showLogFoodView)
+        })
         
     }
 }

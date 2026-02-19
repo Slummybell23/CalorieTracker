@@ -11,8 +11,7 @@ struct BottomMenuBar: View {
     @State var tabSelection: Int = 1
     
     var body: some View {
-        VStack {
-            
+        ZStack {
             if(tabSelection == 1) {
                 DashboardView()
             }
@@ -20,22 +19,22 @@ struct BottomMenuBar: View {
                 Text("Tab \(tabSelection)")
             }
             
-            Spacer()
-            
-            HStack {
+            VStack {
                 Spacer()
-                
-                Menu(/*@START_MENU_TOKEN@*/"Menu"/*@END_MENU_TOKEN@*/) {
-                    Button("Show Dashboard") {
-                        tabSelection = 1
+                HStack {
+                    Spacer()
+                    
+                    Menu(/*@START_MENU_TOKEN@*/"Menu"/*@END_MENU_TOKEN@*/) {
+                        Button("Show Dashboard") {
+                            tabSelection = 1
+                        }
+                        Button("Show Tab 2") {
+                            tabSelection = 2
+                        }
                     }
-                    Button("Show Tab 2") {
-                        tabSelection = 2
-                    }
+                    .padding(10)
                 }
-                .padding(10)
             }
-            
         }
     }
 }
