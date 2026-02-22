@@ -15,6 +15,9 @@ struct BottomMenuBar: View {
             if(tabSelection == 1) {
                 DashboardView()
             }
+            else if(tabSelection == 2) {
+                SettingsView()
+            }
             else {
                 Text("Tab \(tabSelection)")
             }
@@ -28,7 +31,7 @@ struct BottomMenuBar: View {
                         Button("Show Dashboard") {
                             tabSelection = 1
                         }
-                        Button("Show Tab 2") {
+                        Button("Show Settings") {
                             tabSelection = 2
                         }
                     }

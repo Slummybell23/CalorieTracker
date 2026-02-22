@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct LogFoodView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Binding var dailyLog: DailyLog
 
     @State private var foodName: String = ""
     @State private var eatenDate: Date = Date()
@@ -37,8 +37,8 @@ struct LogFoodView: View {
             
             Section {
                 Button("Log Food") {
-                    modelContext.insert(FoodLogItem(name: foodName, creationDate: eatenDate, calories: calories))
-                    
+                    dailyLog.foodLog.append(FoodLogItem(name: foodName, creationDate: eatenDate, calories: calories))
+
                     showFoodLogView = false
                 }
             }

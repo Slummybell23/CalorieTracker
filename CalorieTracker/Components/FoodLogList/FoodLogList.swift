@@ -9,16 +9,23 @@ import SwiftUI
 import SwiftData
 
 struct FoodLogList: View {
-    @Query private var foodLogs: [FoodLogItem]
+    @Binding var foodLogs: [FoodLogItem]
     
+    private var todaysFoodLogs: [FoodLogItem] {
+        let today = Date()
+        let calendar = Calendar.current
+        
+        return foodLogs.filter { log in
+            calendar.isDate(log.creationDate, inSameDayAs: today)
+        }
+    }
     var body: some View {
         Section {
             Text("Food Log")
             
             List {
-                ForEach(foodLogs) { log in
-                    
-                    Text(log.name)
+                ForEach(todaysFoodLogs) { log in
+                    FoodLogItemView(foodLog: log)
                 }
             }
             .listStyle(PlainListStyle())
@@ -26,8 +33,4 @@ struct FoodLogList: View {
         .padding(10)
         .cardModifier()
     }
-}
-
-#Preview {
-    FoodLogList()
 }
